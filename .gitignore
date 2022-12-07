@@ -2,3 +2,8 @@
 .ipynb_checkpoints/
 .idea/
 *.pyc
+simulators_sc_ldpc/bp_decoding/CMakeCache.txt
+simulators_sc_ldpc/bp_decoding/CMakeFiles/*
+simulators_sc_ldpc/bp_decoding/Makefile
+simulators_sc_ldpc/bp_decoding/*.dat
+simulators_sc_ldpc/bp_decoding/cmake_install.cmake

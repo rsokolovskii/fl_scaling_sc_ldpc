@@ -1,3 +1,7 @@
+# Estimating the scaling parameters for finite-length scaling laws
+#
+# Implemented by Roman Sokolovskii
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -157,8 +161,60 @@ from scipy.optimize import curve_fit
 def calc_theta_explicit_ss_bounds(r1s, start, stop, M):
     npoints = 1000
     ivl = int((stop - start) / npoints)
+
+    r1s_float = np.array(r1s, dtype='float')
+    r1s_float = r1s_float[:,start:stop:ivl] / M
+    r1s_float[r1s_float == 0] = np.nan
+    r1s_df = pd.DataFrame(r1s_float)
+
+    c = r1s_df.corr()
+
+    space = np.linspace(0.1, 0.9, 50)
+    thetas = []
+    for l in space:
+        loc = (start + (stop - start) * l) / M
+        func = lambda x, theta: np.exp(-theta * np.abs(x - loc))
+        xdata = np.arange(start,stop,ivl) / M
+        ydata = c[int(c.shape[0] * l)]
+
+        popt, pcov = curve_fit(func, xdata, ydata, bounds=(0, 5))
+        theta = tuple(popt)[0]
+        thetas.append(theta)
+        plt.plot(xdata, func(xdata, *popt))
+        plt.plot(xdata, ydata)
+    plt.show()
+
+    #print(thetas)
+    theta = np.mean(thetas)
+    return theta
+
+
+def est_scaling_params_with_theta_ppd(r1s, r1s_theory, g, gstar, M, L):
+    lvl, idxs = find_level(r1s_theory)
+    gamma = calc_gamma(lvl, M, gstar, g)
+    nu = calc_nu(r1s, r1s_theory, idxs, M)
+    taustar_coeff = calc_taustar_coeff(idxs, M, L)
+    taustar = calc_taustar(taustar_coeff, L)
+    theta = calc_theta_ppd(r1s, idxs, M)
+    end_coeff = calc_end_coeff(idxs, M, L)
+
+    print(f"taustar = lambda g: {taustar_coeff} * L")
+    print(f"end_coeff = lambda g: g * L")
+    print(f"gamma   = {gamma}")
+    print(f"nu      = {nu}")
+    print(f"theta   = {theta}")
+    return taustar, end_coeff, gamma, nu, theta
+
+def calc_theta_ppd(r1s, idxs, M):
+    start = np.min(np.where(idxs))
+    stop = np.max(np.where(idxs))
+    return calc_theta_explicit_ss_bounds_ppd(r1s, start, stop, M)
+
+import pandas as pd
+from scipy.optimize import curve_fit
+def calc_theta_explicit_ss_bounds_ppd(r1s, start, stop, M):
     ivl = 1
-    
+
     r1s_float = np.array(r1s, dtype='float')
     r1s_float = r1s_float[:,start:stop:ivl] / M
     r1s_float[r1s_float == 0] = np.nan
@@ -174,8 +230,8 @@ def calc_theta_explicit_ss_bounds(r1s, start, stop, M):
         func = lambda x, theta: np.exp(-theta * np.abs(x - loc))
         xdata = np.arange(start,stop,ivl)
         ydata = c[int(c.shape[0] * l)]
-    
-        popt, pcov = curve_fit(func, xdata, ydata, bounds=(0, 20))
+
+        popt, pcov = curve_fit(func, xdata, ydata, bounds=(0, 5))
         theta = tuple(popt)[0]
         thetas.append(theta)
         plt.plot(xdata, func(xdata, *popt))

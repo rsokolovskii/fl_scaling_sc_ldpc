@@ -1,3 +1,12 @@
+# Finite-length scaling laws for full BP decoding with unlimited iterations
+#
+# Described in
+# R. Sokolovskii, A. Graell i Amat, and F. Br\"annstr\"om,
+# "Finite-length scaling of spatially coupled LDPC codes under window decoding over the BEC"
+# IEEE Trans. Commun., vol. 68, no. 10, pp. 5988–5998, Oct. 2020.
+#
+# Implemented by Roman Sokolovskii
+
 from scipy.stats import norm, expon
 import scipy.integrate as integrate
 import numpy as np

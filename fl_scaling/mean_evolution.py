@@ -5,6 +5,17 @@
 # APPENDIX A. EXPECTED EVOLUTION IN ONE ITERATION OF THE PD
 # (PD stands for Peeling Decoding)
 #
+# Also implemented here is Mean Evolution for Parallel Peeling Decoding (PPD), as described in
+# M. Stinner, L. Barletta, and P. M. Olmos,
+# "Finite-length scaling based on belief propagation for spatially coupled LDPC codes"
+# in Proc. IEEE Int.  Symp. Inf. Theory (ISIT), Barcelona, Spain, Jul. 2016, pp. 2109–2113.
+# APPENDINX B. EXPECTED GRAPH EVOLUTION IN A SINGLE ITERATION OF PPD
+#
+# VN doping (both soft and hard) is implemented as described in
+# R. Sokolovskii, A. Graell i Amat, and F. Br\"annstr\"om,
+# "On doped SC- LDPC codes for streaming"
+# IEEE Commun. Lett., vol. 25, no. 7, pp. 2123–2127, Jul. 2021.
+#
 # Implemented by Roman Sokolovskii
 
 import numpy as np

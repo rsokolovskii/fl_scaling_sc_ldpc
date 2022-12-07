@@ -1,4 +1,12 @@
 ## Density evolution for SC-LDPC codes, frame-Asyncronous CSA and IRSA
+#
+# VN doping (both soft and hard) is implemented as described in
+# R. Sokolovskii, A. Graell i Amat, and F. Br\"annstr\"om,
+# "On doped SC- LDPC codes for streaming"
+# IEEE Commun. Lett., vol. 25, no. 7, pp. 2123–2127, Jul. 2021.
+#
+# Implemented by Roman Sokolovskii
+
 import numpy as np
 from numpy.polynomial.polynomial import polyval, polyder
 import scipy.io
