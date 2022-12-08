@@ -6,21 +6,21 @@ The step-by-step guide to using the scaling laws can be found in the Jupyter not
 The code in this repository is used in several papers.
 Please consider citing them if you are using the code.
 
-For the scaling laws for full BP and sliding window decoding with unlimited iterations, please cite
+For the scaling laws for full BP and sliding window decoding with unlimited iterations, please cite ([link](https://ieeexplore.ieee.org/abstract/document/9145741))
 ```
 R. Sokolovskii, A. Graell i Amat, and F. Brännström,
 "Finite-length scaling of spatially coupled LDPC codes under window decoding over the BEC"
 IEEE Trans. Commun., vol. 68, no. 10, pp. 5988–5998, Oct. 2020.
 ```
 
-For the scaling laws for full BP and sliding window decoding with limited iterations, please cite
+For the scaling laws for full BP and sliding window decoding with limited iterations, please cite ([link](https://arxiv.org/abs/2203.08880))
 ```
 Roman Sokolovskii, Alexandre Graell i Amat, Fredrik Brännström,
 "Finite-Length Scaling of SC-LDPC Codes With a Limited Number of Decoding Iterations"
-https://arxiv.org/abs/2203.08880
+[Online] Available: https://arxiv.org/abs/2203.08880
 ```
 
-For the scaling laws for doped ensembles, please cite
+For the scaling laws for doped ensembles, please cite ([link](https://ieeexplore.ieee.org/document/9389745))
 ```
 R. Sokolovskii, A. Graell i Amat, and F. Brännström,
 "On doped SC- LDPC codes for streaming"
