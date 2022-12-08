@@ -26,3 +26,17 @@ R. Sokolovskii, A. Graell i Amat, and F. Brännström,
 "On doped SC- LDPC codes for streaming"
 IEEE Commun. Lett., vol. 25, no. 7, pp. 2123–2127, Jul. 2021.
 ```
+
+
+Some files are larger than 100 MB. GitHub requires using `git lfs` in this case.
+To install `git lfs`, run
+```bash
+$ brew install git-lfs
+```
+
+To fetch the file (after cloning the repository), run
+```bash
+$ git lfs fetch --all
+```
+
+See [here](https://docs.github.com/en/repositories/working-with-files/managing-large-files/collaboration-with-git-large-file-storage) for details on using `git lfs`.
