@@ -1,1 +1,2 @@
 sim_data/trajectories_peeling_decoding/r1_sc_ldpc_4_8_50_10000_048_nonterminated_0.pkl filter=lfs diff=lfs merge=lfs -text
+data/r1_sc_ldpc_4_8_50_10000_048_nonterminated_theory_full.pkl filter=lfs diff=lfs merge=lfs -text
